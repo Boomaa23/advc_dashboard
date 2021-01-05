@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <title>Adventure Capitalist Dashboard</title>
+    <style>
+        body { font-family: sans-serif; }
+        h1, h3, td { text-align: center; }
+        th { padding-top: 10px; }
+        #main { margin: 0 10px 0 10px; }
+        .subheader { margin: 0 0 10px 0; }
+        .block {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <h1>Adventure Capitalist Dashboard</h1>
+</div>
+<div id="main">
+    <h2 class="subheader">Statistics</h2>
+    <!-- put "over time" upgrade functions here -->
+    <div class="block">
+        <table align="center" width="100%">
+        {%for planet, businesses in data.items()%}
+            <th colspan="5">{{planet}}</th>
+            <tr>
+            {%for business in businesses%}
+                {%if loop.index0 == 5%}
+                </tr><tr>
+                {%endif%}
+                <td>
+                    {{business}}<br />
+                    <img src="static/img/{{planet}}/{{business}}.png" width="100%">
+                </td>
+            {%endfor%}
+            </tr>
+        {%endfor%}
+        </table>
+    </div>
+
+    <h2 class="subheader">Upgrades</h2>
+</div>
+</body>
+</html>
